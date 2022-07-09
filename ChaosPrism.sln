@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosPrism", "ChaosPrism\ChaosPrism.csproj", "{BDC4A91D-01E8-460F-9852-EB97A4C93117}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{2E7B1780-97A4-42C1-B9A8-4472563FD264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosPrismTests", "ChaosPrismTests\ChaosPrismTests.csproj", "{2C811F02-837D-41E6-A568-D031CB5443A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{BDC4A91D-01E8-460F-9852-EB97A4C93117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC4A91D-01E8-460F-9852-EB97A4C93117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC4A91D-01E8-460F-9852-EB97A4C93117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7B1780-97A4-42C1-B9A8-4472563FD264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7B1780-97A4-42C1-B9A8-4472563FD264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7B1780-97A4-42C1-B9A8-4472563FD264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7B1780-97A4-42C1-B9A8-4472563FD264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C811F02-837D-41E6-A568-D031CB5443A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C811F02-837D-41E6-A568-D031CB5443A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C811F02-837D-41E6-A568-D031CB5443A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C811F02-837D-41E6-A568-D031CB5443A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
