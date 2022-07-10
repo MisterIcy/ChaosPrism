@@ -237,7 +237,7 @@ public static partial class SDL2
     public static extern int RenderFillRects(IntPtr renderer, [In] Rect[] rects, int count);
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RenderCopy")]
-    public static extern int RenderCopy(IntPtr renderer, IntPtr texture, in Rect? srcRect, in Rect? dstRect)
+    public static extern int RenderCopy(IntPtr renderer, IntPtr texture, in Rect? srcRect, in Rect? dstRect);
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RenderCopyEx")]
     public static extern int RenderCopyEx(IntPtr renderer, IntPtr texture, in Rect? srcRect, in Rect? dstRect,
@@ -283,8 +283,8 @@ public static partial class SDL2
         in Color color, int colorStride, in float uv, int uvStride, int numVertices, [In] int[] indices,
         int numIndices);
 
-    public static extern int
-        SDL_RenderReadPixels(IntPtr renderer, in Rect? rect, uint format, IntPtr pixels, int pitch);
+    [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RenderReadPixels")] 
+    public static extern int RenderReadPixels(IntPtr renderer, in Rect? rect, uint format, IntPtr pixels, int pitch);
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RenderPresent")]
     public static extern void RenderPresent(IntPtr renderer);

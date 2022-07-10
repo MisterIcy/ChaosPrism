@@ -26,7 +26,7 @@ public static partial class SDL2
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public fixed struct PixelFormat
+    public unsafe struct PixelFormat
     {
         public uint Format;
         public IntPtr Palette;
@@ -50,9 +50,13 @@ public static partial class SDL2
         public IntPtr Next;
     }
 
-    [return: MarshalAs(UnmanagedType.LPStr)]
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetPixelFormatName")]
-    public static extern String GetPixelFormatName(uint format);
+    private static extern IntPtr SDL_GetPixelFormatName(uint format);
+
+    public static string GetPixelFormatName(uint format)
+    {
+        return CharToManagedString(SDL_GetPixelFormatName(format));
+    }
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_PixelFormatEnumToMasks")]
     public static extern bool PixelFormatEnumToMasks(

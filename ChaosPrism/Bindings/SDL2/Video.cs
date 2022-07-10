@@ -95,9 +95,13 @@ public static partial class SDL2
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetNumVideoDrivers")]
     public static extern int GetNumVideoDrivers();
 
-    [return: MarshalAs(UnmanagedType.LPStr)]
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetVideoDriver")]
-    public static extern String GetVideoDriver(int index);
+    private static extern IntPtr SDL_GetVideoDriver(int index);
+
+    public static string GetVideoDriver(int index)
+    {
+        return CharToManagedString(SDL_GetVideoDriver(index));
+    }
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_VideoInit")]
     public static extern int VideoInit([MarshalAs(UnmanagedType.LPStr)] String driverName);
@@ -105,16 +109,24 @@ public static partial class SDL2
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_VideoQuit")]
     public static extern void VideoQuit();
 
-    [return: MarshalAs(UnmanagedType.LPStr)]
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetCurrentVideoDriver")]
-    public static extern String GetCurrentVideoDriver();
+    private static extern IntPtr SDL_GetCurrentVideoDriver();
+
+    public static string GetCurrentVideoDriver()
+    {
+        return CharToManagedString(SDL_GetCurrentVideoDriver());
+    }
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetNumVideoDisplays")]
     public static extern int GetNumVideoDisplays();
-
-    [return: MarshalAs(UnmanagedType.LPStr)]
+    
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetDisplayName")]
-    public static extern String GetDisplayName(int displayIndex);
+    private static extern IntPtr SDL_GetDisplayName(int displayIndex);
+
+    public static string GetDisplayName(int displayIndex)
+    {
+        return CharToManagedString(SDL_GetDisplayName(displayIndex));
+    }
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetDisplayBounds")]
     public static extern int GetDisplayBounds(int displayIndex, out Rect rect);
@@ -141,7 +153,8 @@ public static partial class SDL2
     public static extern int GetCurrentDisplayMode(int displayIndex, out DisplayMode mode);
 
     [return: MarshalAs(UnmanagedType.LPStruct)]
-    public static extern DisplayMode? SDL_GetClosestDisplayMode(int displayIndex, ref DisplayMode closest);
+    [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetClosestDisplayMode")] 
+    public static extern DisplayMode? GetClosestDisplayMode(int displayIndex, ref DisplayMode closest);
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetWindowDisplayIndex")]
     public static extern int GetWindowDisplayIndex(IntPtr window);
@@ -179,7 +192,12 @@ public static partial class SDL2
 
     [return: MarshalAs(UnmanagedType.LPStr)]
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetWindowTitle")]
-    public static extern String GetWindowTitle(IntPtr window);
+    private static extern IntPtr SDL_GetWindowTitle(IntPtr window);
+
+    public static string GetWindowTitle(IntPtr window)
+    {
+        return CharToManagedString(SDL_GetWindowTitle(window));
+    }
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_SetWindowIcon")]
     public static extern void SetWindowIcon(IntPtr window, IntPtr iconSurface);
@@ -283,7 +301,7 @@ public static partial class SDL2
     public static extern int SetWindowMouseRect(IntPtr window, in Rect? rect);
 
     [return: MarshalAs(UnmanagedType.LPStruct)]
-    public static extern Rect? SDL_GetWindowMouseRect(IntPtr window);
+    [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetWindowMouseRect")] public static extern Rect GetWindowMouseRect(IntPtr window);
 
     [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_SetWindowBrightness")]
     public static extern int SetWindowBrightness(IntPtr window, float brightness);
